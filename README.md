@@ -14,7 +14,7 @@ npm init -y
 npm install bower -g
 ```
 ### 3.2 配置bower
-配置bower的下载后的安装目录
+配置bower的下载后的安装目录 .bowerrc
 ```
 {
   "directory":"./public/lib"
