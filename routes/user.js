@@ -6,6 +6,13 @@ var router = express.Router();
 router.get('/signup',function(req,res){
     res.render('user/signup',{title:'注册'});
 });
+//处理客户端提交过来的post请求
+router.post('/signup',function(req,res){
+  //这个请求体对象的属性和表单里的输入组件的name属性一一对应
+  var user = req.body;// {username:'admin',password:'admin',email:'83687401@qq.com'}
+  res.send(user);
+});
+
 router.get('/signin',function(req,res){
     res.render('user/signin',{title:'登录'});
 });

@@ -1,4 +1,6 @@
 var express = require('express');
+//引用bodyParser解析请求体，把请求体转成对象挂在req.body属性上
+var bodyParser = require('body-parser');
 var path = require('path');
 //首页路由
 var index = require('./routes/index');
@@ -9,6 +11,8 @@ var article = require('./routes/article');
 var app = express();
 //public目录作为静态文件根目录
 app.use(express.static(path.join(__dirname,'public')));
+//使用urlencoded插件把序列化表单格式的请求体转成对象放在req.body上
+app.use(bodyParser.urlencoded({extended:true}));
 //设置模板引擎
 app.set('view engine','html');
 //设置模板的存放根目录
