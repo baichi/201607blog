@@ -7,6 +7,8 @@ var user = require('./routes/user');
 //文章路由
 var article = require('./routes/article');
 var app = express();
+//public目录作为静态文件根目录
+app.use(express.static(path.join(__dirname,'public')));
 //设置模板引擎
 app.set('view engine','html');
 //设置模板的存放根目录
