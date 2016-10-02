@@ -8,7 +8,8 @@ var router = express.Router();
  */
 router.get('/',function(req,res){
     //读取所有的文章数组并用来渲染模板
-    Article.find({},function(err,docs){
+    //populate就是填充的意思，把就是把某个属性从字段串转成对应对象
+    Article.find({}).populate('user').exec(function(err,docs){
         res.render('index',{title:'首页',articles:docs});
     });
 });

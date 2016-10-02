@@ -26,4 +26,14 @@ router.post('/add',function(req, res){
         }
     });
 });
+/**
+ * 1.把标题变成超链接
+ * 2. 点击超链接向服务器提交请求，传递文章的_id,
+ * 3.服务器端要处理路由，从_id得到文章对象并渲染文章详情页模板
+ */
+router.get('/detail/:_id',function(req,res){
+  Article.findById(req.params._id,function(err,doc){
+      res.render('article/detail',{title:'文章详情',article:doc});
+  })
+});
 module.exports = router;
