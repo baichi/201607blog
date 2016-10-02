@@ -1,6 +1,7 @@
 var express = require('express');
 //如果加载的是一个文件夹，那么会自动加载文件夹下面的index.js模块
 var User = require('../db').User;
+
 //调用express Router方法可以得到一个路径的实例,它是一个路由的容器
 var router = express.Router();
 //真正客户端请求的url=路由前缀+此处配置的路由路径
