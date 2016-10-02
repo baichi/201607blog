@@ -24,7 +24,7 @@ var app = express();
 });*/
 /**
  * 读取客户端发过来的cookie req.cookies
- * 向客户端写cookie req.cookie('count',1);
+ * 向客户端写cookie res.cookie('count',1);
  */
 app.get('/visit',function(req,res){
 
