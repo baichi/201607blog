@@ -27,6 +27,10 @@ app.set('view engine','html');
 app.set('views',path.join(__dirname,'views'));
 //设置模板的渲染函数
 app.engine('html',require('ejs').__express);
+app.use(function(req,res,next){
+    res.locals.user = req.session.user;
+    next();
+});
 //如果请求的路径以下面这个路径开头的话
 app.use('/',index);
 app.use('/user',user);
