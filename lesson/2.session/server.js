@@ -6,7 +6,9 @@ var app = express();
  * 就是这个客户端在服务器对应的数据对象
  */
 app.use(session({
-    secret:'zfpx'
+    secret:'zfpx',
+    resave:true,//重新保存 每次客户端请求服务器的都会重新保存一下session
+    saveUninitialized:true//保存未初始化的session
 }));
 
 app.get('/visit',function(req,res){
