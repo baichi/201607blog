@@ -16,7 +16,8 @@ router.post('/signup',function(req,res){
       if(err){
           res.send(err);
       }else{
-          res.send(doc);
+          //注册成功之后会返回首页
+         res.redirect('/');
       }
   })
 });
