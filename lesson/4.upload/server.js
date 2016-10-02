@@ -13,6 +13,12 @@ app.use(express.static(path.join(__dirname,'uploads')));
 app.get('/',function(req,res){
     res.sendFile('./index.html',{root:__dirname});
 });
+/**
+ * 1. 需一个表单，表单的 enctype="multipart/form-data"
+ * 2. 服务器引入multer中间件，指定上传文件的存放目录
+ * 3. 使用multer中间件，使用完后会得到 req.body 存放所有的文本类型的字段
+ * 4. req.file 存放上传的文件 filename 是保存在服务器端的文件名
+ */
 app.post('/post',upload.single('avatar'),function(req,res){
    console.log(req.body);
    console.log(req.file);

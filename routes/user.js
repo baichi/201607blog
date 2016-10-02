@@ -1,7 +1,10 @@
 var express = require('express');
 //如果加载的是一个文件夹，那么会自动加载文件夹下面的index.js模块
 var User = require('../db').User;
-
+var multer = require('multer');
+//dest是从启动的模块出发的路径 app.js
+var upload = multer({ dest: 'public/uploads/' });
+// avatar:'/uploads/'+filename
 //调用express Router方法可以得到一个路径的实例,它是一个路由的容器
 var router = express.Router();
 //真正客户端请求的url=路由前缀+此处配置的路由路径
@@ -15,9 +18,10 @@ router.get('/signup', function (req, res) {
  * 2. 在注册表单中增加一个文本域，提供头像的上传，修改表单类型为entrytype=
  * 3. 需要后台路由里接收头像并保存到硬盘上，并把头像的图片URL地址保存下来。user.avatar里
  */
-router.post('/signup', function (req, res) {
+router.post('/signup',upload.single('avatar'),function (req, res) {
     //这个请求体对象的属性和表单里的输入组件的name属性一一对应
     var user = req.body;//{username:'admin',password:'admin',email:'83687401@qq.com'}
+    user.avatar = `/uploads/${req.file.filename}`;
     User.create(user, function (err, doc) {
         if (err) {
             res.send(err);
