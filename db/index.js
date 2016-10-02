@@ -1,8 +1,9 @@
 var mongoose = require('mongoose');
 mongoose.Promise = Promise;
 var ObjectId = mongoose.Schema.Types.ObjectId;
+var config = require('../config');
 //连接数据库
-mongoose.connect('mongodb://localhost:27017/201607blog');
+mongoose.connect(config.dbUrl);
 //定义schema 规定了用户集合的文档的属性名和类型
 // 文档的_id ObjectId 主键
 var UserSchema = new mongoose.Schema({

@@ -3,7 +3,9 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
 var path = require('path');
+var config = require('./config');
 //首页路由
 var index = require('./routes/index');
 //用户路由
@@ -19,7 +21,11 @@ app.use(cookieParser());
 app.use(session({
     secret:'zfpx',
     resave:true,
-    saveUninitialized:true
+    saveUninitialized:true,
+    //指定session数据的存放位置
+    store:new MongoStore({
+        url:config.dbUrl//数据库的地址
+    })
 }));
 //设置模板引擎
 app.set('view engine','html');
