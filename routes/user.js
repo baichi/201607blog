@@ -10,6 +10,11 @@ router.get('/signup', function (req, res) {
     res.render('user/signup', {title: '注册'});
 });
 //处理客户端提交过来的post请求
+/**
+ * 1. 修改schema增加avatar类型是字符串
+ * 2. 在注册表单中增加一个文本域，提供头像的上传，修改表单类型为entrytype=
+ * 3. 需要后台路由里接收头像并保存到硬盘上，并把头像的图片URL地址保存下来。user.avatar里
+ */
 router.post('/signup', function (req, res) {
     //这个请求体对象的属性和表单里的输入组件的name属性一一对应
     var user = req.body;//{username:'admin',password:'admin',email:'83687401@qq.com'}

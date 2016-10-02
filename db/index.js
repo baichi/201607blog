@@ -7,6 +7,7 @@ mongoose.connect('mongodb://localhost:27017/201607blog');
 var UserSchema = new mongoose.Schema({
     username:String,//用户名
     password:String,//密码
+    avatar:String,//头像
     email:String//邮箱
 });
 //定义Model
